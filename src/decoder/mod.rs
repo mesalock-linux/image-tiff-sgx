@@ -1,3 +1,4 @@
+use std::prelude::v1::*;
 use std::collections::HashMap;
 use std::io::{self, Read, Seek};
 use std::cmp;
@@ -605,7 +606,7 @@ impl<R: Read + Seek> Decoder<R> {
     ) -> TiffResult<usize> {
         let color_type = self.colortype()?;
         self.goto_offset(offset)?;
-        let (bytes, mut reader): (usize, Box<EndianReader>) = match self.compression_method {
+        let (bytes, mut reader): (usize, Box<dyn EndianReader>) = match self.compression_method {
             CompressionMethod::None => {
                 let order = self.reader.byte_order;
                 (

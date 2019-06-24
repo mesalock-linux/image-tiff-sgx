@@ -1,5 +1,6 @@
 //! Function for reading TIFF tags
 
+use std::prelude::v1::*;
 use std::collections::HashMap;
 use std::io::{self, Read, Seek};
 use std::mem;
@@ -324,7 +325,7 @@ impl Entry {
                 decoder.goto_offset(self.r(bo).read_u32()?)?;
                 let string = decoder.read_string(n as usize)?;
                 Ok(Ascii(string))
-            }
+            },
             _ => Err(TiffError::UnsupportedError(
                 TiffUnsupportedError::UnsupportedDataType,
             )),

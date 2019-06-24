@@ -14,12 +14,17 @@ authors = [
 license = "MIT"
 description = "TIFF decoding and encoding library in pure Rust"
 repository = "https://github.com/image-rs/image-tiff"
-exclude = ["tests/images/*", "tests/fuzz_images/*"]
+exclude = ["tests/images/*", "tests/fuzz_images/*", "/sgx/*"]
 
 [dependencies]
-byteorder = "1.2"
-lzw = "0.10"
-miniz_oxide = "0.3"
+miniz_oxide = { git = "https://github.com/mesalock-linux/miniz_oxide" }
+byteorder = { git = "https://github.com/mesalock-linux/byteorder-sgx" }
+lzw = { git = "https://github.com/mesalock-linux/lzw-sgx" }
+sgx_tstd = { rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk.git", optional = true }
 
 [dev-dependencies]
-tempfile = "3.0"
+#tempfile = "3.0"
+
+[features]
+default = ["mesalock_sgx"]
+mesalock_sgx = ["sgx_tstd"]
