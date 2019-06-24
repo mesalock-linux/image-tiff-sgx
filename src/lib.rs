@@ -6,6 +6,14 @@
 //! # Related Links
 //! * <http://partners.adobe.com/public/developer/tiff/index.html> - The TIFF specification
 
+#![cfg_attr(all(feature = "mesalock_sgx",
+                not(target_env = "sgx")), no_std)]
+#![cfg_attr(all(target_env = "sgx", target_vendor = "mesalock"), feature(rustc_private))]
+
+#[cfg(all(feature = "mesalock_sgx", not(target_env = "sgx")))]
+#[macro_use]
+extern crate sgx_tstd as std;
+
 extern crate byteorder;
 extern crate lzw;
 extern crate miniz_oxide;

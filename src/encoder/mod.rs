@@ -1,4 +1,5 @@
 use byteorder::NativeEndian;
+use std::prelude::v1::*;
 use std::collections::BTreeMap;
 use std::io::{Seek, Write};
 use std::mem;

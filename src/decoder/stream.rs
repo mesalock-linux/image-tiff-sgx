@@ -1,6 +1,7 @@
 //! All IO functionality needed for TIFF decoding
 
 use crate::error::{TiffError, TiffResult};
+use std::prelude::v1::*;
 use byteorder::{BigEndian, LittleEndian, ReadBytesExt};
 use lzw;
 use miniz_oxide::inflate;
