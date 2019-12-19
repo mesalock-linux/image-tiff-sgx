@@ -123,6 +123,8 @@ pub enum Type(u16) {
     SSHORT = 8,
     SLONG = 9,
     SRATIONAL = 10,
+    /// BigTIFF 64-bit unsigned integer
+    LONG8 = 16,
 }
 }
 
